@@ -10,7 +10,6 @@ Source0:	http://fy.chalmers.se/~appro/linux/DVD+RW/tools/%{name}-%{version}.tar.
 Patch0:		%{name}-makefile.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 BuildRequires:	libstdc++-devel
-BuildRequires:	glibc-kernel-headers
 Requires:	cdrtools-mkisofs >= 1.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -25,7 +24,11 @@ Kolekcja narzêdzi do nagrywania p³yt DVD+RW/+R/-R/-RW.
 %patch0 -p1
 
 %build
-%{__make}
+%{__make} \
+	CC="%{__cc}" \
+	CXX="%{__cxx}" \
+	CFLAGS="%{rpmcflags}" \
+	CXXFLAGS="%{rpmcflags} -fno-exceptions"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -43,4 +46,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc index.html
 %attr(755,root,root) %{_bindir}/*
-%doc %{_mandir}/man1/*
+%{_mandir}/man1/*
