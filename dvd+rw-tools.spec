@@ -1,12 +1,12 @@
 Summary:	Toolchain for mastering recordable DVD media
 Summary(pl):	Zestaw narzêdzi do nagrywania p³yt DVD
 Name:		dvd+rw-tools
-Version:	5.20.4.10.8
+Version:	5.21.4.10.8
 Release:	1
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://fy.chalmers.se/~appro/linux/DVD+RW/tools/%{name}-%{version}.tar.gz
-# Source0-md5:	9e4333454ef7cfcbe69b7009e903d23d
+# Source0-md5:	b931c02e2b23342f664276ef26d1502c
 Patch0:		%{name}-makefile.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 BuildRequires:	libstdc++-devel
