@@ -1,0 +1,20 @@
+--- dvd+rw-tools-5.16.4.8.5/Makefile.m4~	2003-12-16 23:11:23.000000000 +0100
++++ dvd+rw-tools-5.16.4.8.5/Makefile.m4	2004-01-02 22:05:01.668620976 +0100
+@@ -118,13 +118,12 @@
+ manprefix?=$(shell case $(prefix) in (*/usr/?*) echo $(prefix)/man ;; (*) echo $(prefix)/share/man ;; esac)
+ 
+ bin_mode?=0755	# yes, default is *no* set-uid
+-minus_o:=$(shell [[ `id -u` == 0 ]] && echo "-o root")
+ 
+ install:	dvd+rw-tools
+-	[[ -d $(prefix)/bin ]] || mkdir -p $(prefix)/bin
+-	install $(minus_o) -m $(bin_mode) $(CHAIN) $(prefix)/bin
+-	[[ -d $(manprefix)/man1 ]] || mkdir -p $(manprefix)/man1
+-	install $(minus_o) -m 0644 growisofs.1 $(manprefix)/man1
++	[[ -d $(DESTDIR)$(prefix)/bin ]] || mkdir -p $(DESTDIR)$(prefix)/bin
++	install $(CHAIN) $(DESTDIR)$(prefix)/bin
++	[[ -d $(DESTDIR)$(manprefix)/man1 ]] || mkdir -p $(DESTDIR)$(manprefix)/man1
++	install growisofs.1 $(DESTDIR)$(manprefix)/man1
+ ])
+ # common section
+ [
