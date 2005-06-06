@@ -9,8 +9,8 @@ Source0:	http://fy.chalmers.se/~appro/linux/DVD+RW/tools/%{name}-%{version}.tar.
 # Source0-md5:	b931c02e2b23342f664276ef26d1502c
 Patch0:		%{name}-makefile.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
-BuildRequires:	m4
 BuildRequires:	libstdc++-devel
+BuildRequires:	m4
 Requires:	cdrtools-mkisofs >= 1.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
