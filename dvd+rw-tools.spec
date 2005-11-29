@@ -8,6 +8,7 @@ Group:		Applications/Multimedia
 Source0:	http://fy.chalmers.se/~appro/linux/DVD+RW/tools/%{name}-%{version}.tar.gz
 # Source0-md5:	b931c02e2b23342f664276ef26d1502c
 Patch0:		%{name}-makefile.patch
+Patch1:		%{name}-bacula.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 BuildRequires:	libstdc++-devel
 BuildRequires:	m4
@@ -23,6 +24,7 @@ Kolekcja narzêdzi do nagrywania p³yt DVD+RW/+R/-R/-RW.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} \
