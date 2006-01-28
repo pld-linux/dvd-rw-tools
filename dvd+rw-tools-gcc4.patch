@@ -1,68 +1,20 @@
---- dvd+rw-tools-5.21.4.10.8/growisofs.c.orig	2006-01-28 13:45:32.000000000 +0100
-+++ dvd+rw-tools-5.21.4.10.8/growisofs.c	2006-01-28 13:50:40.665927750 +0100
-@@ -1354,8 +1354,8 @@
-     {	tracksize = dao_size ? (dao_size*CD_BLOCK) : sb.st_size;
- 	progress->final=outoff+tracksize;
- 	if (capacity && progress->final > capacity)
--	{   fprintf (stderr,":-( %s: %lld blocks are free, "
--			    "%lld to be written!\n",
-+	{   fprintf (stderr,":-( %s: %zd blocks are free, "
-+			    "%zd to be written!\n",
- 			    ioctl_device,
- 			    (capacity-outoff)/2048,tracksize/2048);
- 	    if (overburn)
-@@ -1387,14 +1387,14 @@
- 			(double)(current-outoff);
- 		delta *= ratio - 1.0;
- 		velocity=(current-lastcurrent)/(-slept*1024*1385);
--		fprintf (stdout,"%10lld/%lld (%4.1f%%) @%.1fx, "
-+		fprintf (stdout,"%10zd/%zd (%4.1f%%) @%.1fx, "
- 				"remaining %d:%02d\n",
- 				current,progress->final,100.0/ratio,
- 				velocity,delta/60,delta%60);
- 		lastcurrent=current;
- 	    }
- 	    else
--		fprintf (stdout,"%10lld/%lld (%4.1f%%) @0x, remaining ??:??\n",
-+		fprintf (stdout,"%10zd/%zd (%4.1f%%) @0x, remaining ??:??\n",
- 				current,progress->final,0.0);
- 	    fflush (stdout);
- 	}
-@@ -1415,8 +1415,8 @@
- 	        {   if (tracksize==0)
- 		    {	tracksize=from_733(descr->volume_space_size)*CD_BLOCK;
- 			if (capacity && (outoff+tracksize) > capacity)
--		    	{   fprintf (stderr,":-( %s: %lld blocks are free, "
--					    "%lld to be written\n",
-+		    	{   fprintf (stderr,":-( %s: %zd blocks are free, "
-+					    "%zd to be written\n",
- 					    ioctl_device,
- 					    (capacity-outoff)/2048,
- 					    tracksize/2048);
-@@ -1542,7 +1542,7 @@
- 	outoff += DVD_BLOCK;
-     }
+--- dvd+rw-tools-6.0/growisofs.c.orig	2006-01-28 18:06:28.000000000 +0100
++++ dvd+rw-tools-6.0/growisofs.c	2006-01-28 18:07:52.134334250 +0100
+@@ -434,7 +434,7 @@
+ #endif
  
--    printf ("builtin_dd: %lld*2KB out @ average %.1fx1385KBps\n",
-+    printf ("builtin_dd: %zd*2KB out @ average %.1fx1385KBps\n",
- 	    (outoff-startoff)/2048,
- 	    ((outoff-startoff)/(1024.0*1385.0))/(time(NULL)-progress->zero));
- out:
-@@ -1941,7 +1941,7 @@
+ #ifndef LLD
+-#define LLD		"lld"
++#define LLD		"zd"
+ #endif
  
- 			dup2(in_fd,imgfd);	/* kludge! */
- 		    	if (lseek64 (imgfd,off,SEEK_SET) == (off64_t)-1)
--			    fprintf (stderr,":-( %s: unable to lseek(%lld): ",
-+			    fprintf (stderr,":-( %s: unable to lseek(%zd): ",
- 					    in_device,off),
- 			    perror (NULL), exit(FATAL_START(errno));
- 		    } else if (alleged_next_session!=next_session)
-@@ -2135,10 +2135,10 @@
+ typedef ssize_t (*pwrite64_t)(int,const void *,size_t,off64_t);
+@@ -2768,10 +2768,10 @@
  
  	if (dev_found == 'F') {
  		off64_t capacity = 0;
 -		printf("next_session=%lld\n", next_session*CD_BLOCK);
-+		printf("next_session=%zd\n", next_session*CD_BLOCK);
++		printf("next_session=%ld\n", next_session*CD_BLOCK);
  		if (ioctl_handle!=INVALID_HANDLE)
  			capacity = get_capacity (ioctl_handle);
 -		printf("capacity=%lld\n", capacity);
@@ -70,14 +22,3 @@
  		exit(0);
  	}
  
---- dvd+rw-tools-5.21.4.10.8/growisofs_mmc.cpp.orig	2004-07-16 14:48:57.000000000 +0200
-+++ dvd+rw-tools-5.21.4.10.8/growisofs_mmc.cpp	2006-01-28 13:50:59.583110000 +0100
-@@ -91,7 +91,7 @@
- 	if ((n=fcntl (ioctl_fd,F_GETFD))<0) n=0;
- 	fcntl (ioctl_fd,F_SETFD,n&~FD_CLOEXEC);
- 
--	sprintf (str,"%d",ioctl_fd);
-+	sprintf (str,"%ld",ioctl_fd);
- 	execlp(_argv[0],"-reload",str,ioctl_device,NULL);
-     }
-     else
