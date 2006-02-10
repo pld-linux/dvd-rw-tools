@@ -13,6 +13,7 @@ Patch2:		%{name}-gcc4.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 BuildRequires:	libstdc++-devel
 BuildRequires:	m4
+Conflicts:	k3b < 0.12.11
 Requires:	cdrtools-mkisofs >= 1.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
