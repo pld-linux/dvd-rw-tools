@@ -1,6 +1,16 @@
---- dvd+rw-tools-5.16.4.8.5/Makefile.m4~	2003-12-16 23:11:23.000000000 +0100
-+++ dvd+rw-tools-5.16.4.8.5/Makefile.m4	2004-01-02 22:05:01.668620976 +0100
-@@ -118,13 +118,12 @@
+diff -Nur dvd+rw-tools-6.1-orig/Makefile.m4 dvd+rw-tools-6.1/Makefile.m4
+--- dvd+rw-tools-6.1-orig/Makefile.m4	2006-02-15 23:26:15.259609250 +0100
++++ dvd+rw-tools-6.1/Makefile.m4	2006-02-15 23:47:06.985837250 +0100
+@@ -1,7 +1,7 @@
+ # OBS! M4 processed!
+ changequote([, ])
+ [
+-CHAIN=growisofs dvd+rw-format dvd+rw-booktype dvd+rw-mediainfo dvd-ram-control
++CHAIN=growisofs dvd+rw-format dvd+rw-booktype dvd+rw-mediainfo dvd-ram-control rpl8 btcflash
+ 
+ dvd+rw-tools:	$(CHAIN)
+ 
+@@ -176,17 +176,17 @@
  manprefix?=$(shell case $(prefix) in (*/usr/?*) echo $(prefix)/man ;; (*) echo $(prefix)/share/man ;; esac)
  
  bin_mode?=0755	# yes, default is *no* set-uid
@@ -15,6 +25,13 @@
 +	install $(CHAIN) $(DESTDIR)$(prefix)/bin
 +	[[ -d $(DESTDIR)$(manprefix)/man1 ]] || mkdir -p $(DESTDIR)$(manprefix)/man1
 +	install growisofs.1 $(DESTDIR)$(manprefix)/man1
++
+ 	[[ -f rpl8 ]] && \
+-	  install $(minus_o) -m $(bin_mode) rpl8 $(prefix)/bin
++	  install rpl8 $(DESTDIR)$(prefix)/bin
+ 	[[ -f btcflash ]] && \
+-	  install $(minus_o) -m $(bin_mode) btcflash $(prefix)/bin
++	  install btcflash $(DESTDIR)$(prefix)/bin
  ])
+ 
  # common section
- [
