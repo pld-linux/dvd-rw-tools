@@ -2,14 +2,14 @@ Summary:	Toolchain for mastering recordable DVD media
 Summary(pl):	Zestaw narzêdzi do nagrywania p³yt DVD
 Name:		dvd+rw-tools
 Version:	6.1
-Release:	0.2
+Release:	1
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://fy.chalmers.se/~appro/linux/DVD+RW/tools/%{name}-%{version}.tar.gz
 # Source0-md5:	d6bad594e55a2e0d7cf76ce452fce399
 Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-bacula.patch
-Patch2:		%{name}-gcc4.patch
+Patch2:		%{name}-printf.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 BuildRequires:	libstdc++-devel
 BuildRequires:	m4
@@ -32,8 +32,8 @@ Kolekcja narzêdzi do nagrywania p³yt DVD+RW/+R/-R/-RW.
 %{__make} \
 	CC="%{__cc}" \
 	CXX="%{__cxx}" \
-	CFLAGS="%{rpmcflags}" \
-	CXXFLAGS="%{rpmcflags} -fno-exceptions"
+	CFLAGS="%{rpmcflags} -Wall" \
+	CXXFLAGS="%{rpmcflags} -fno-exceptions -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
