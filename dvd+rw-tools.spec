@@ -2,7 +2,7 @@ Summary:	Toolchain for mastering recordable DVD media
 Summary(pl):	Zestaw narzêdzi do nagrywania p³yt DVD
 Name:		dvd+rw-tools
 Version:	6.1
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://fy.chalmers.se/~appro/linux/DVD+RW/tools/%{name}-%{version}.tar.gz
@@ -21,6 +21,13 @@ Collection of tools to master DVD+RW/+R/-R/-RW media.
 
 %description -l pl
 Kolekcja narzêdzi do nagrywania p³yt DVD+RW/+R/-R/-RW.
+
+%package btcflash
+Summary:	BTC firmware updater
+Group:		Applications/Multimedia
+
+%description btcflash
+BTC CD/DVD reader/writer firmware updater.
 
 %prep
 %setup -q
@@ -51,4 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc index.html
 %attr(755,root,root) %{_bindir}/*
+%exclude %{_bindir}/btcflash
 %{_mandir}/man1/*
+
+%files btcflash
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/btcflash
