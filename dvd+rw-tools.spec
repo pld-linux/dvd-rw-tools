@@ -23,11 +23,16 @@ Collection of tools to master DVD+RW/+R/-R/-RW media.
 Kolekcja narzêdzi do nagrywania p³yt DVD+RW/+R/-R/-RW.
 
 %package btcflash
-Summary:	BTC firmware updater
+Summary:	BTC CD/DVD reader/writer firmware updater
+Summary(pl):	Program do uaktualniania firmware'u czytników/nagrywarek CD/DVD BTC
 Group:		Applications/Multimedia
 
 %description btcflash
 BTC CD/DVD reader/writer firmware updater.
+
+%description btcflash -l pl
+Program do uaktualniania firmware'u czytników/nagrywarek CD/DVD firmy
+BTC.
 
 %prep
 %setup -q
