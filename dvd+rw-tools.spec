@@ -13,7 +13,7 @@ Patch2:		%{name}-printf.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 BuildRequires:	libstdc++-devel
 BuildRequires:	m4
-Requires:	mkisofs >= 5:1.10
+Requires:	mkisofs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
