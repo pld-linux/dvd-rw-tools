@@ -1,5 +1,5 @@
 Summary:	Toolchain for mastering recordable DVD media
-Summary(pl.UTF-8):   Zestaw narzędzi do nagrywania płyt DVD
+Summary(pl.UTF-8):	Zestaw narzędzi do nagrywania płyt DVD
 Name:		dvd+rw-tools
 Version:	7.0
 Release:	2
@@ -24,7 +24,7 @@ Kolekcja narzędzi do nagrywania płyt DVD+RW/+R/-R/-RW.
 
 %package btcflash
 Summary:	BTC CD/DVD reader/writer firmware updater
-Summary(pl.UTF-8):   Program do uaktualniania firmware'u czytników/nagrywarek CD/DVD BTC
+Summary(pl.UTF-8):	Program do uaktualniania firmware'u czytników/nagrywarek CD/DVD BTC
 Group:		Applications/Multimedia
 
 %description btcflash
