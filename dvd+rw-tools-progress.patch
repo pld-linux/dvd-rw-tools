@@ -1,0 +1,12 @@
+diff -ruN dvd+rw-tools-7.0./growisofs.c dvd+rw-tools-7.0/growisofs.c
+--- dvd+rw-tools-7.0./growisofs.c	2007-07-17 18:47:15.000000000 +0200
++++ dvd+rw-tools-7.0/growisofs.c	2007-07-17 18:55:45.651369091 +0200
+@@ -2034,7 +2034,7 @@
+     while (1)
+     {	slept =  this_very_moment();
+ 	lastcurrent = progress.current;
+-	poll (NULL,0,3333);
++	poll (NULL,0,333);
+ 	slept -= this_very_moment();
+ 	if (progress.zero==0 || !nfirst++) continue;
+ 	if ((current = progress.current) > outoff)
