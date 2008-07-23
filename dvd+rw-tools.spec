@@ -1,17 +1,15 @@
 Summary:	Toolchain for mastering recordable DVD media
 Summary(pl.UTF-8):	Zestaw narzędzi do nagrywania płyt DVD
 Name:		dvd+rw-tools
-Version:	7.0
-Release:	4
+Version:	7.1
+Release:	1
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://fy.chalmers.se/~appro/linux/DVD+RW/tools/%{name}-%{version}.tar.gz
-# Source0-md5:	2eb9c2a6b1e6bc7c4d72d3b5ece34ceb
+# Source0-md5:	8acb3c885c87f6838704a0025e435871
 Patch0:		%{name}-makefile.patch
-Patch1:		%{name}-bacula.patch
-Patch2:		%{name}-printf.patch
-Patch3:		%{name}-progress.patch
-Patch4:		%{name}-headers.patch
+Patch1:		%{name}-progress.patch
+Patch2:		%{name}-headers.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 BuildRequires:	libstdc++-devel
 BuildRequires:	m4
@@ -41,8 +39,8 @@ BTC.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
+
+head -n 395 growisofs.c > ChangeLog
 
 %build
 %{__make} \
@@ -66,9 +64,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc index.html
-%attr(755,root,root) %{_bindir}/*
-%exclude %{_bindir}/btcflash
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/dvd+rw-*
+%attr(755,root,root) %{_bindir}/dvd-ram-control
+%attr(755,root,root) %{_bindir}/growisofs
+%attr(755,root,root) %{_bindir}/rpl8
+%{_mandir}/man1/growisofs.1*
 
 %files btcflash
 %defattr(644,root,root,755)
