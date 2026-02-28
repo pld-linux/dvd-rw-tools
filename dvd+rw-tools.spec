@@ -2,7 +2,7 @@ Summary:	Toolchain for mastering recordable DVD media
 Summary(pl.UTF-8):	Zestaw narzędzi do nagrywania płyt DVD
 Name:		dvd+rw-tools
 Version:	7.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Multimedia
 Source0:	http://fy.chalmers.se/~appro/linux/DVD+RW/tools/%{name}-%{version}.tar.gz
